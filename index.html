@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Petite question 😏</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #e5d4ff);
+      overflow: hidden;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 450px;
+      padding: 35px 20px;
+      text-align: center;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #yes {
+      background: #4caf50;
+      color: white;
+    }
+
+    #no {
+      background: #e74c3c;
+      color: white;
+      position: relative;
+    }
+
+    #yes:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+
+    <h1> Envoie un nude de toi stp ? 😏</h1>
+
+    <p>Alors, oui ou non ?</p>
+
+    <div class="buttons">
+      <button id="yes">Oui ❤️</button>
+      <button id="no">Non 😭</button>
+    </div>
+
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+
+    function moveNoButton() {
+
+      // Le bouton passe en position fixe
+      noButton.style.position = "fixed";
+
+      // Taille du bouton
+      const buttonWidth = noButton.offsetWidth;
+      const buttonHeight = noButton.offsetHeight;
+
+      // Zone disponible
+      const maxX = window.innerWidth - buttonWidth - 20;
+      const maxY = window.innerHeight - buttonHeight - 20;
+
+      // Nouvelle position aléatoire
+      const x = Math.max(10, Math.random() * maxX);
+      const y = Math.max(10, Math.random() * maxY);
+
+      noButton.style.left = x + "px";
+      noButton.style.top = y + "px";
+    }
+
+    // Ordinateur
+    noButton.addEventListener("mouseenter", moveNoButton);
+
+    // Téléphone
+    noButton.addEventListener("touchstart", function(event) {
+      event.preventDefault();
+      moveNoButton();
+    });
+
+    // Bouton Oui
+    yesButton.addEventListener("click", function() {
+
+      document.getElementById("card").innerHTML = `
+        <h1>Je savais que tu étais une petite coquine 😝</h1>
+
+        <p>
+          J'attends ça avec impatience ❤️
+        </p>
+      `;
+
+    });
+  </script>
+
+</body>
+</html>
